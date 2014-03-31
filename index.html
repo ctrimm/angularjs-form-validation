@@ -37,29 +37,29 @@
     <!-- novalidate makes sure there is not HTML5 validation since we're validating it ourselves. -->
 
         <!--Name-->
-        <div class="form-group">
+        <div class="form-group" ng-class="{ 'has-error : userForm.name.$invalid && userForm.name.$pristine && submitted }">
             <label>Name</label>
-            <input type="text" name="name" class="form-control" ng-model="name" required>
-            <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block">You name is required!</p>
+            <input type="text" name="name" class="form-control" autocomplete="off" ng-model="name" required>
+            <p ng-show="userForm.name.$invalid && !userForm.name.$pristine && submitted" class="help-block">You name is required!</p>
         </div>
 
         <!--Username-->
-        <div class="form-group">
+        <div class="form-group" ng-class="{'has-error' : userForm.username.$invalid && !userForm.username.$pristine && submitted}">
             <label>Username</label>
-            <input type="text" name="username" class="form-control" ng-model="user.username" ng-minlength="3" ng-maxlength="8">
-            <p ng-show="userForm.username.$error.minlength" class="help-block">Username is too short.</p>
-            <p ng-show="userForm.username.$error.maxlength" class="help-block">Username is too long.</p>
+            <input type="text" name="username" class="form-control" autocomplete="off" ng-model="user.username" ng-minlength="3" ng-maxlength="8">
+            <p ng-show="userForm.username.$error.minlength && submitted" class="help-block">Username is too short.</p>
+            <p ng-show="userForm.username.$error.maxlength && submitted" class="help-block">Username is too long.</p>
         </div>
 
         <!--Email-->
-        <div class="form-group">
+        <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine && submitted}">
             <label>Email</label>
-            <input type="email" name="email" class="form-control" ng-model="email">
-            <input ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid Email</div>
+            <input type="email" name="email" class="form-control" autocomplete="off" ng-model="user.email">
+            <p ng-show="userForm.email.$invalid && !userForm.email.$pristine && submitted" class="help-block">Enter a valid email.</p>
         </div>
 
         <!--Submit button-->
-        <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
 
     </form>
 </div> <!-- /col-sm-8  -->

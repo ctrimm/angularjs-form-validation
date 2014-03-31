@@ -10,5 +10,6 @@
 			if(isValid){
 				alert("this form is awesome!");
 			}
+			$scope.submitted = true;
 		}
 	});
